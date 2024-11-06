@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Exercício 9 da disciplina ProgWeb">
+    <meta name="keywords" content="HTML, Exercício, ProgWeb">
+    <meta name="author" content="Fabio Ramos">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/agenda.css">
+
+    <title>Agenda (Cadastro de Contatos)</title>
+</head>
+<body>
+    <h1>Agenda (Cadastro de Contatos)</h1>
+    <h2>Listagem de contatos salvos</h2>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th colspan="2">Ações</th>
+        </tr>
+        <tr th:each="contato : ${contatos}">
+            <td th:text="${contato.nome}">Nome</td>
+            <td th:text="${contato.email}">Email</td>
+            <td th:text="${contato.telefone}">Telefone</td>
+            <td><a th:href="@{/agenda/editar/{id}(id=${contato.id})}">Editar</a></td>
+            <td><a th:href="@{/agenda/excluir/{id}(id=${contato.id})}">Excluir</a></td>
+        </tr>
+    </table>
+
+    <a href="/agenda/cadastro">Novo</a>
+    <a href="/agenda/listar">Listar</a>
+</body>
+</html>
